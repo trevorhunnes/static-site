@@ -1,10 +1,16 @@
 from textnode import TextType
 from textnode import TextNode
+from htmlnode import HTMLNode
 
 
 def main():
-    text = TextNode("Hello!", TextType.PLAIN)
-    print(text)
+    html_node = HTMLNode(
+        props={
+            "href": "https://www.google.com",
+            "target": "_blank",
+        }
+    )
+    print(html_node)
 
 
 main()
