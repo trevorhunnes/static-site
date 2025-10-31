@@ -1,6 +1,6 @@
 from textnode import TextType
 from textnode import TextNode
-from htmlnode import HTMLNode
+from htmlnode import HTMLNode, LeafNode
 
 
 def main():
