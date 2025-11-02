@@ -1,16 +1,12 @@
 from textnode import TextType
 from textnode import TextNode
 from htmlnode import HTMLNode, LeafNode
+from delimiter import split_nodes_delimiter
 
 
 def main():
-    html_node = HTMLNode(
-        props={
-            "href": "https://www.google.com",
-            "target": "_blank",
-        }
-    )
-    print(html_node)
+    node = TextNode("**", TextType.TEXT)
+    print(split_nodes_delimiter([node], "`", TextType.CODE))
 
 
 main()
