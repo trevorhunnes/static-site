@@ -51,7 +51,7 @@ This is the same paragraph on a new line
         )
 
     def test_block_to_block_types(self):
-        block = "# heading"
+        block = "## heading"
         self.assertEqual(block_to_block_type(block), BlockType.HEADING)
         block = "```\ncode\n```"
         self.assertEqual(block_to_block_type(block), BlockType.CODE)
