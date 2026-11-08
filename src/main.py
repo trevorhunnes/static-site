@@ -19,8 +19,7 @@ def main():
     else:
         basepath = sys.argv[1]
     generate_public()
-    generate_pages_recursive(
-        "./content/", "./template.html", "./docs/", basepath)
+    generate_pages_recursive("./content/", "./template.html", "./docs/", basepath)
 
 
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
@@ -36,16 +35,18 @@ def walk(current_dir, content_root, dest_root, template, basepath):
             walk(entry, content_root, dest_root, template, basepath)
         elif entry.is_file() and entry.suffix == ".md":
             relative = entry.relative_to(content_root)
-            out_relative = (relative.with_name(
-                "index.html") if relative.name == "index.md" else relative.with_suffix(".html"))
+            out_relative = (
+                relative.with_name("index.html")
+                if relative.name == "index.md"
+                else relative.with_suffix(".html")
+            )
             out_path = dest_root / out_relative
             out_path.parent.mkdir(parents=True, exist_ok=True)
             generate_page(str(entry), str(template), str(out_path), basepath)
 
 
 def generate_page(from_path, template_path, dest_path, basepath):
-    print(f"Generating page from {from_path} to {
-          dest_path} using {template_path}...")
+    print(f"Generating page from {from_path} to {dest_path} using {template_path}...")
     with open(from_path) as f:
         md = f.read()
     f.close()
